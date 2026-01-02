@@ -21,21 +21,5 @@ export const technologyType = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-
-    defineField({
-      name: 'width',
-      title: 'Icon width (px)',
-      type: 'number',
-      initialValue: 24,
-      validation: (Rule) => Rule.required().positive().integer().max(128),
-    }),
-
-    defineField({
-      name: 'height',
-      title: 'Icon height (px)',
-      type: 'number',
-      initialValue: 24,
-      validation: (Rule) => Rule.required().positive().integer().max(128),
-    }),
   ],
 })
