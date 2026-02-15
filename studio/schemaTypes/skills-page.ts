@@ -7,6 +7,12 @@ export const skillsPageType = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
+    defineField({
       name: 'skills',
       title: 'Technologies',
       type: 'array',

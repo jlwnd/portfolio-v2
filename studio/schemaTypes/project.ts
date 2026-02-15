@@ -6,6 +6,12 @@ export const projectType = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
+    defineField({
       name: 'slug',
       title: 'ID / Slug',
       type: 'slug',
