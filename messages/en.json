@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects"
+  },
+  "hero": {
+    "viewProjects": "View Projects",
+    "imageAlt": "Jakub Lewandowski"
+  },
+  "about": {
+    "heading": "About Me",
+    "intro": "Hi, I'm Jakub Lewandowski",
+    "p1": "My journey in web development began with a curiosity for building engaging digital experiences. Since then, I've developed a solid foundation in fullstack development, with a particular strength on the backend — especially working with NestJS.",
+    "p2currently": "Currently, I'm working at",
+    "p2role": "as a Junior Python Developer, where I build and deploy machine learning models.",
+    "p3": "Outside of work, I enjoy exploring new technologies — lately, that curiosity has led me to dive into the fundamentals of machine learning. I'm currently focused on learning how to build and train models from scratch, and understanding the core principles that power intelligent systems. You'll also often find me on the badminton court, unwinding with a good game."
+  },
+  "skills": {
+    "heading": "Skills"
+  },
+  "timeline": {
+    "heading": "Career Timeline",
+    "professional": "Professional",
+    "education": "Education"
+  },
+  "featuredProjects": {
+    "heading": "Featured Projects",
+    "viewAll": "View all projects"
+  },
+  "projects": {
+    "heading": "My Projects",
+    "description": "A collection of projects I've worked on, from web applications to design systems. Each project represents a unique challenge and showcases different skills and technologies I've mastered along my journey as a developer.",
+    "filterAll": "All",
+    "viewDetails": "View Details",
+    "noImage": "No Image",
+    "status": "Status:",
+    "completed": "Completed",
+    "inProgress": "In Progress"
+  },
+  "projectDetail": {
+    "details": "Project Details",
+    "projectType": "Project Type",
+    "timeline": "Timeline",
+    "links": "Links",
+    "viewSourceCode": "View Source Code",
+    "visitLiveSite": "Visit Live Site",
+    "overview": "Overview",
+    "features": "Features",
+    "technicalDetails": "Technical Details",
+    "challenges": "Challenges",
+    "outcome": "Outcome",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "goToImage": "Go to image {number}"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backToHome": "Back to Home",
+    "goBack": "Go Back"
+  },
+  "footer": {
+    "designedBy": "Designed & developed by Jakub Lewandowski",
+    "allRightsReserved": "© {year} All rights reserved"
+  },
+  "metadata": {
+    "title": "Jakub Lewandowski - Fullstack Developer",
+    "description": "Fullstack Developer specializing in React, Node.js, TypeScript, and backend (NestJS). Passionate about machine learning and building modern web applications.",
+    "projectsTitle": "Projects | Jakub Lewandowski - Fullstack Developer",
+    "projectsDescription": "A showcase of technical projects including Go CLI tools, backend systems, and full-stack applications built with modern technologies.",
+    "projectsImageAlt": "Jakub Lewandowski's Projects"
+  },
+  "localeSwitcher": {
+    "en": "EN",
+    "pl": "PL",
+    "label": "Language"
+  }
+}

@@ -2,8 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Github } from "lucide-react";
 import { Project } from "@/types";
+import { useTranslations } from "next-intl";
 
 export const ProjectLinks = ({ project }: { project: Project }) => {
+  const t = useTranslations("projectDetail");
+
   if (!project.links || project.links.length === 0) {
     return null;
   }
@@ -11,7 +14,7 @@ export const ProjectLinks = ({ project }: { project: Project }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Links</CardTitle>
+        <CardTitle>{t("links")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {project.links.map((link) => (
@@ -29,8 +32,8 @@ export const ProjectLinks = ({ project }: { project: Project }) => {
               )}
               {link.label ||
                 (link.type === "github"
-                  ? "View Source Code"
-                  : "Visit Live Site")}
+                  ? t("viewSourceCode")
+                  : t("visitLiveSite"))}
             </a>
           </Button>
         ))}

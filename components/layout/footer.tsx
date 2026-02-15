@@ -1,7 +1,10 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export const Footer = () => {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-t border-primary/10 bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4 py-8">
@@ -33,8 +36,8 @@ export const Footer = () => {
           </div>
 
           <div className="text-sm text-muted-foreground text-center md:text-right">
-            <p>Designed & developed by Jakub Lewandowski</p>
-            <p>&copy; {new Date().getFullYear()} All rights reserved</p>
+            <p>{t("designedBy")}</p>
+            <p>{t("allRightsReserved", { year: new Date().getFullYear() })}</p>
           </div>
         </div>
       </div>

@@ -3,11 +3,13 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, Home } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function NotFound() {
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations("notFound");
 
   useEffect(() => {
     setMounted(true);
@@ -43,22 +45,21 @@ export default function NotFound() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="space-y-4"
         >
-          <h1 className="text-2xl md:text-3xl font-bold">Page Not Found</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">{t("title")}</h1>
           <p className="text-muted-foreground">
-            The page you&apos;re looking for doesn&apos;t exist or has been
-            moved.
+            {t("description")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button asChild>
               <Link href="/" className="flex items-center gap-2">
                 <Home className="h-4 w-4" />
-                Back to Home
+                {t("backToHome")}
               </Link>
             </Button>
             <Button variant="outline" onClick={() => window.history.back()}>
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Go Back
+              {t("goBack")}
             </Button>
           </div>
         </motion.div>

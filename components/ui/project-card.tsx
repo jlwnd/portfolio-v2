@@ -3,9 +3,11 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Project } from "@/types";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
+  const t = useTranslations("projects");
   return (
     <Card className="overflow-hidden group border-primary/10 transition-all hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 flex flex-col h-full">
       <div className="aspect-video relative overflow-hidden bg-secondary">
@@ -18,7 +20,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               fill
             />
           ) : (
-            <div className="text-muted-foreground">No Image</div>
+            <div className="text-muted-foreground">{t("noImage")}</div>
           )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -55,7 +57,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       <CardFooter className="p-6 pt-0 mt-auto">
         <Link href={`/projects/${project.slug}`} className="w-full">
           <div className="flex items-center justify-center w-full py-2 text-sm font-medium transition-colors rounded-md bg-secondary hover:bg-secondary/80 group-hover:bg-primary group-hover:text-primary-foreground">
-            View Details
+            {t("viewDetails")}
             <ArrowUpRight className="w-4 h-4 ml-2" />
           </div>
         </Link>

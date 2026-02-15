@@ -2,10 +2,12 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
 export function AboutMotion() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const t = useTranslations("about");
 
   return (
     <div ref={ref} className="max-w-3xl mx-auto mt-12">
@@ -15,17 +17,12 @@ export function AboutMotion() {
         transition={{ duration: 0.5 }}
         className="prose prose-lg dark:prose-invert"
       >
-        <p>Hi, I&apos;m Jakub Lewandowski</p>
+        <p>{t("intro")}</p>
+
+        <p>{t("p1")}</p>
 
         <p>
-          My journey in web development began with a curiosity for building
-          engaging digital experiences. Since then, I&apos;ve developed a solid
-          foundation in fullstack development, with a particular strength on the
-          backend — especially working with NestJS.
-        </p>
-
-        <p>
-          Currently, I&apos;m working at{" "}
+          {t("p2currently")}{" "}
           <a
             href="https://blockwise.pl/"
             target="_blank"
@@ -33,18 +30,10 @@ export function AboutMotion() {
           >
             BlockWise
           </a>{" "}
-          as a Junior Python Developer, where I build and deploy machine
-          learning models.
+          {t("p2role")}
         </p>
 
-        <p>
-          Outside of work, I enjoy exploring new technologies — lately, that
-          curiosity has led me to dive into the fundamentals of machine
-          learning. I&apos;m currently focused on learning how to build and
-          train models from scratch, and understanding the core principles that
-          power intelligent systems. You&apos;ll also often find me on the
-          badminton court, unwinding with a good game.
-        </p>
+        <p>{t("p3")}</p>
       </motion.div>
     </div>
   );

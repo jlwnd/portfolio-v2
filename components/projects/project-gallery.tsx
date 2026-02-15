@@ -6,9 +6,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export const ProjectGallery = ({ images }: { images: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const t = useTranslations("projectDetail");
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -50,7 +52,7 @@ export const ProjectGallery = ({ images }: { images: string[] }) => {
           onClick={handlePrevious}
         >
           <ChevronLeft className="h-5 w-5" />
-          <span className="sr-only">Previous image</span>
+          <span className="sr-only">{t("previousImage")}</span>
         </Button>
 
         <Button
@@ -60,7 +62,7 @@ export const ProjectGallery = ({ images }: { images: string[] }) => {
           onClick={handleNext}
         >
           <ChevronRight className="h-5 w-5" />
-          <span className="sr-only">Next image</span>
+          <span className="sr-only">{t("nextImage")}</span>
         </Button>
       </div>
 
@@ -74,7 +76,7 @@ export const ProjectGallery = ({ images }: { images: string[] }) => {
             )}
             onClick={() => setCurrentIndex(index)}
           >
-            <span className="sr-only">Go to image {index + 1}</span>
+            <span className="sr-only">{t("goToImage", { number: index + 1 })}</span>
           </button>
         ))}
       </div>

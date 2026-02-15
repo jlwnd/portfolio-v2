@@ -7,8 +7,11 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { Project } from "@/types";
+import { useTranslations } from "next-intl";
 
 export const ProjectHeader = ({ project }: { project: Project }) => {
+  const t = useTranslations("projects");
+
   return (
     <div className="mb-8">
       <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
@@ -16,15 +19,10 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
       </h1>
 
       <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-        {/* <div className="flex items-center gap-1.5">
-          <Calendar className="h-4 w-4" />
-          <span>Last updated: {formatDate(project.lastUpdated)}</span>
-        </div> */}
-
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-1.5">
             <Clock className="h-4 w-4" />
-            Status:
+            {t("status")}
           </span>
           <Badge
             variant={
@@ -50,9 +48,9 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
               <AlertCircle className="w-3.5 h-3.5 mr-1.5" />
             )}
             {project.status === "COMPLETED"
-              ? "Completed"
+              ? t("completed")
               : project.status === "IN_PROGRESS"
-              ? "In Progress"
+              ? t("inProgress")
               : project.status}
           </Badge>
         </div>

@@ -4,17 +4,19 @@ import { Button } from "@/components/ui/button";
 import { useProjects } from "@/store/projects.store";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export const ProjectsFilter = () => {
   const { toggleFilter, filters, allProjects } = useProjects();
   const [technologies, setTechnologies] = useState<string[]>([]);
+  const t = useTranslations("projects");
 
   useEffect(() => {
     const techs = Array.from(
       new Set(allProjects.flatMap((p) => p.technologies))
     ).sort();
-    setTechnologies(["All", ...techs]);
-  }, [allProjects]);
+    setTechnologies([t("filterAll"), ...techs]);
+  }, [allProjects, t]);
 
   return (
     <motion.div

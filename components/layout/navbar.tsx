@@ -3,24 +3,23 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
+import { LocaleSwitcher } from "../locale-switcher";
 
-interface NavItem {
-  href: string;
-  label: string;
-}
-
-const navItems: NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-];
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
+  const t = useTranslations("nav");
+
+  const navItems = [
+    { href: "/", label: t("home") },
+    { href: "/projects", label: t("projects") },
+  ] as const;
 
   return (
     <header
@@ -64,6 +63,7 @@ export const Navbar = () => {
               {item.label}
             </Link>
           ))}
+          <LocaleSwitcher />
         </nav>
 
         <Button
@@ -118,6 +118,7 @@ export const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
+              <LocaleSwitcher />
             </div>
           </motion.div>
         )}

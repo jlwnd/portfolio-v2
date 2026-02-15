@@ -2,18 +2,21 @@ import { TechBackground } from "@/components/ui/tech-background";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AboutMotion } from "./about-motion";
 import { SkillsPageContent } from "@/types";
+import { useTranslations } from "next-intl";
 
-export async function About({
+export function About({
   skillsPageContent,
 }: {
   skillsPageContent: SkillsPageContent;
 }) {
+  const t = useTranslations("about");
+
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
       <TechBackground skills={skillsPageContent.skills} />
 
       <div className="container px-4 mx-auto relative z-10">
-        <SectionHeading>About Me</SectionHeading>
+        <SectionHeading>{t("heading")}</SectionHeading>
 
         <AboutMotion />
       </div>
