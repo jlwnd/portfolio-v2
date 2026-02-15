@@ -46,9 +46,7 @@ export default function NotFound() {
           className="space-y-4"
         >
           <h1 className="text-2xl md:text-3xl font-bold">{t("title")}</h1>
-          <p className="text-muted-foreground">
-            {t("description")}
-          </p>
+          <p className="text-muted-foreground">{t("description")}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button asChild>

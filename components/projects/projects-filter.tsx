@@ -13,7 +13,7 @@ export const ProjectsFilter = () => {
 
   useEffect(() => {
     const techs = Array.from(
-      new Set(allProjects.flatMap((p) => p.technologies))
+      new Set(allProjects.flatMap((p) => p.technologies)),
     ).sort();
     setTechnologies([t("filterAll"), ...techs]);
   }, [allProjects, t]);

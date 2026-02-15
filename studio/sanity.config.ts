@@ -19,13 +19,7 @@ export default defineConfig({
         {id: 'en', title: 'English'},
         {id: 'pl', title: 'Polish'},
       ],
-      schemaTypes: [
-        'heroPage',
-        'aboutMePage',
-        'skillsPage',
-        'experiencePage',
-        'project',
-      ],
+      schemaTypes: ['heroPage', 'aboutMePage', 'skillsPage', 'experiencePage', 'project'],
     }),
   ],
 

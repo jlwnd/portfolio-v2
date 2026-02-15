@@ -16,9 +16,7 @@ export const ProjectsHeader = () => {
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
           {t("heading")}
         </h1>
-        <p className="text-muted-foreground max-w-2xl">
-          {t("description")}
-        </p>
+        <p className="text-muted-foreground max-w-2xl">{t("description")}</p>
       </motion.div>
     </div>
   );

@@ -72,11 +72,13 @@ export const ProjectGallery = ({ images }: { images: string[] }) => {
             key={index}
             className={cn(
               "h-2 w-2 rounded-full transition-colors",
-              index === currentIndex ? "bg-primary" : "bg-primary/20"
+              index === currentIndex ? "bg-primary" : "bg-primary/20",
             )}
             onClick={() => setCurrentIndex(index)}
           >
-            <span className="sr-only">{t("goToImage", { number: index + 1 })}</span>
+            <span className="sr-only">
+              {t("goToImage", { number: index + 1 })}
+            </span>
           </button>
         ))}
       </div>

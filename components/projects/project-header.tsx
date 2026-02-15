@@ -29,15 +29,15 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
               project.status === "COMPLETED"
                 ? "default"
                 : project.status === "IN_PROGRESS"
-                ? "secondary"
-                : "outline"
+                  ? "secondary"
+                  : "outline"
             }
             className={
               project.status === "COMPLETED"
                 ? "bg-green-500/15 text-green-600 hover:bg-green-500/25 border-green-500/20 dark:text-green-400 pl-2 pr-2.5 py-0.5"
                 : project.status === "IN_PROGRESS"
-                ? "bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 border-amber-500/20 dark:text-amber-400 pl-2 pr-2.5 py-0.5"
-                : "pl-2 pr-2.5 py-0.5"
+                  ? "bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 border-amber-500/20 dark:text-amber-400 pl-2 pr-2.5 py-0.5"
+                  : "pl-2 pr-2.5 py-0.5"
             }
           >
             {project.status === "COMPLETED" ? (
@@ -50,8 +50,8 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
             {project.status === "COMPLETED"
               ? t("completed")
               : project.status === "IN_PROGRESS"
-              ? t("inProgress")
-              : project.status}
+                ? t("inProgress")
+                : project.status}
           </Badge>
         </div>
       </div>

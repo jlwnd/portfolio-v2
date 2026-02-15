@@ -1,13 +1,15 @@
 import { TechBackground } from "@/components/ui/tech-background";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AboutMotion } from "./about-motion";
-import { SkillsPageContent } from "@/types";
+import { AboutMePageContent, SkillsPageContent } from "@/types";
 import { useTranslations } from "next-intl";
 
 export function About({
   skillsPageContent,
+  aboutContent,
 }: {
   skillsPageContent: SkillsPageContent;
+  aboutContent: AboutMePageContent;
 }) {
   const t = useTranslations("about");
 
@@ -18,7 +20,7 @@ export function About({
       <div className="container px-4 mx-auto relative z-10">
         <SectionHeading>{t("heading")}</SectionHeading>
 
-        <AboutMotion />
+        <AboutMotion content={aboutContent?.content} />
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import {
 import { sanity } from "./sanity";
 
 export const getHeroContent = async (
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<HeroPageContent> => {
   const result = await sanity.fetch<HeroPageContent>(
     `
@@ -18,7 +18,7 @@ export const getHeroContent = async (
       techStack
     }
   `,
-    { locale }
+    { locale },
   );
 
   if (result) return result;
@@ -33,14 +33,14 @@ export const getHeroContent = async (
 };
 
 export const getAboutMeContent = async (
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<AboutMePageContent> => {
   const result = await sanity.fetch<AboutMePageContent>(
     `
     *[_type == "aboutMePage" && language == $locale][0] {
       content
     }`,
-    { locale }
+    { locale },
   );
 
   if (result) return result;
@@ -52,7 +52,7 @@ export const getAboutMeContent = async (
 };
 
 export const getSkills = async (
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<SkillsPageContent> => {
   const result = await sanity.fetch<SkillsPageContent>(
     `
@@ -63,7 +63,7 @@ export const getSkills = async (
       }
     }
   `,
-    { locale }
+    { locale },
   );
 
   if (result) return result;
@@ -79,7 +79,7 @@ export const getSkills = async (
 };
 
 export const getExperience = async (
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<ExperiencePageContent> => {
   const result = await sanity.fetch<ExperiencePageContent>(
     `
@@ -88,7 +88,7 @@ export const getExperience = async (
       educationalExperience
     }
   `,
-    { locale }
+    { locale },
   );
 
   if (result) return result;
@@ -102,7 +102,7 @@ export const getExperience = async (
 };
 
 export const getFeaturedProjects = async (
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<Project[]> => {
   const result = await sanity.fetch<Project[]>(
     `
@@ -119,7 +119,7 @@ export const getFeaturedProjects = async (
       "images": coalesce(images[].asset->url, [])
     }
   `,
-    { locale }
+    { locale },
   );
 
   if (result && result.length > 0) return result;
@@ -141,7 +141,7 @@ export const getFeaturedProjects = async (
 };
 
 export const getProjects = async (
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<Project[]> => {
   const result = await sanity.fetch<Project[]>(
     `
@@ -158,7 +158,7 @@ export const getProjects = async (
       "images": coalesce(images[].asset->url, [])
     }
   `,
-    { locale }
+    { locale },
   );
 
   if (result && result.length > 0) return result;
@@ -181,7 +181,7 @@ export const getProjects = async (
 
 export const getProject = async (
   slug: string,
-  locale: string = "en"
+  locale: string = "en",
 ): Promise<Project> => {
   const result = await sanity.fetch<Project>(
     `
@@ -203,7 +203,7 @@ export const getProject = async (
       outcome
     }
   `,
-    { slug, locale }
+    { slug, locale },
   );
 
   if (result) return result;
@@ -228,6 +228,6 @@ export const getProject = async (
       outcome
     }
   `,
-    { slug }
+    { slug },
   );
 };
