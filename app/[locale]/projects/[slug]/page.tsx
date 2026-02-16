@@ -4,6 +4,7 @@ import { ProjectGallery } from "@/components/projects/project-gallery";
 import { ProjectHeader } from "@/components/projects/project-header";
 import { ProjectLinks } from "@/components/projects/project-links";
 import { getProject } from "@/lib/queries";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 export const revalidate = 86400;
@@ -11,9 +12,12 @@ export const revalidate = 86400;
 export default async function ProjectPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const project = await getProject(params.slug);
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
+
+  const project = await getProject(slug, locale);
 
   if (!project) {
     notFound();

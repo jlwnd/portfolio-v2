@@ -1,8 +1,8 @@
 import { getHeroContent } from "@/lib/queries";
 import { HeroMotion } from "./hero-motion";
 
-export async function Hero() {
-  const hero = await getHeroContent();
+export async function Hero({ locale }: { locale: string }) {
+  const hero = await getHeroContent(locale);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-16 bg-background">

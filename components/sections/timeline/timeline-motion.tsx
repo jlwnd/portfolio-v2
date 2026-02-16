@@ -6,6 +6,7 @@ import { ExperiencePageContent } from "@/types";
 import { motion, useInView } from "framer-motion";
 import { Briefcase, GraduationCap } from "lucide-react";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
 export function TimelineMotion({
   experiencePageContent,
@@ -14,6 +15,7 @@ export function TimelineMotion({
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const t = useTranslations("timeline");
 
   if (!experiencePageContent) return null;
 
@@ -26,11 +28,11 @@ export function TimelineMotion({
         <TabsList className="grid w-full grid-cols-2 mb-8">
           <TabsTrigger value="professional" className="flex items-center gap-2">
             <Briefcase className="h-4 w-4" />
-            <span>Professional</span>
+            <span>{t("professional")}</span>
           </TabsTrigger>
           <TabsTrigger value="education" className="flex items-center gap-2">
             <GraduationCap className="h-4 w-4" />
-            <span>Education</span>
+            <span>{t("education")}</span>
           </TabsTrigger>
         </TabsList>
 
