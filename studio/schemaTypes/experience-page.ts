@@ -6,6 +6,12 @@ export const experiencePageType = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
+    defineField({
       name: 'professionalExperience',
       title: 'Professional Experience',
       type: 'array',

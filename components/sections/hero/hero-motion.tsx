@@ -5,8 +5,10 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { HeroPageContent } from "@/types";
+import { useTranslations } from "next-intl";
 
 export function HeroMotion({ hero }: { hero: HeroPageContent }) {
+  const t = useTranslations("hero");
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
 
@@ -20,7 +22,7 @@ export function HeroMotion({ hero }: { hero: HeroPageContent }) {
       >
         <Image
           src={hero.imageUrl}
-          alt="Jakub Lewandowski"
+          alt={t("imageAlt")}
           width={280}
           height={280}
         />
@@ -45,7 +47,7 @@ export function HeroMotion({ hero }: { hero: HeroPageContent }) {
         </div>
 
         <Button size="lg" asChild>
-          <a href="#projects">View Projects</a>
+          <a href="#projects">{t("viewProjects")}</a>
         </Button>
       </motion.div>
     </div>

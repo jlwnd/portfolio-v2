@@ -7,8 +7,11 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { Project } from "@/types";
+import { useTranslations } from "next-intl";
 
 export const ProjectHeader = ({ project }: { project: Project }) => {
+  const t = useTranslations("projects");
+
   return (
     <div className="mb-8">
       <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
@@ -16,30 +19,25 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
       </h1>
 
       <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-        {/* <div className="flex items-center gap-1.5">
-          <Calendar className="h-4 w-4" />
-          <span>Last updated: {formatDate(project.lastUpdated)}</span>
-        </div> */}
-
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-1.5">
             <Clock className="h-4 w-4" />
-            Status:
+            {t("status")}
           </span>
           <Badge
             variant={
               project.status === "COMPLETED"
                 ? "default"
                 : project.status === "IN_PROGRESS"
-                ? "secondary"
-                : "outline"
+                  ? "secondary"
+                  : "outline"
             }
             className={
               project.status === "COMPLETED"
                 ? "bg-green-500/15 text-green-600 hover:bg-green-500/25 border-green-500/20 dark:text-green-400 pl-2 pr-2.5 py-0.5"
                 : project.status === "IN_PROGRESS"
-                ? "bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 border-amber-500/20 dark:text-amber-400 pl-2 pr-2.5 py-0.5"
-                : "pl-2 pr-2.5 py-0.5"
+                  ? "bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 border-amber-500/20 dark:text-amber-400 pl-2 pr-2.5 py-0.5"
+                  : "pl-2 pr-2.5 py-0.5"
             }
           >
             {project.status === "COMPLETED" ? (
@@ -50,10 +48,10 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
               <AlertCircle className="w-3.5 h-3.5 mr-1.5" />
             )}
             {project.status === "COMPLETED"
-              ? "Completed"
+              ? t("completed")
               : project.status === "IN_PROGRESS"
-              ? "In Progress"
-              : project.status}
+                ? t("inProgress")
+                : project.status}
           </Badge>
         </div>
       </div>

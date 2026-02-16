@@ -7,7 +7,7 @@ export type HeroPageContent = {
 };
 
 export type AboutMePageContent = {
-  content: string;
+  content: PortableTextBlock[];
 };
 
 export type SkillItem = {

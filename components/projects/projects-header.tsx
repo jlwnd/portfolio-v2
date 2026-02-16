@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export const ProjectsHeader = () => {
+  const t = useTranslations("projects");
+
   return (
     <div className="mb-12">
       <motion.div
@@ -11,14 +14,9 @@ export const ProjectsHeader = () => {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-          My Projects
+          {t("heading")}
         </h1>
-        <p className="text-muted-foreground max-w-2xl">
-          A collection of projects I&apos;ve worked on, from web applications to
-          design systems. Each project represents a unique challenge and
-          showcases different skills and technologies I&apos;ve mastered along
-          my journey as a developer.
-        </p>
+        <p className="text-muted-foreground max-w-2xl">{t("description")}</p>
       </motion.div>
     </div>
   );
