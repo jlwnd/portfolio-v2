@@ -56,9 +56,9 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
         </div>
       </div>
 
-      <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+      {/* <p className="text-lg text-muted-foreground max-w-3xl mb-6">
         {project.description}
-      </p>
+      </p> */}
 
       <div className="flex flex-wrap gap-2">
         {project.technologies.map((tech: string) => (
