@@ -8,18 +8,13 @@
     "imageAlt": "Jakub Lewandowski"
   },
   "about": {
-    "heading": "O mnie",
-    "intro": "Cześć, jestem Jakub Lewandowski",
-    "p1": "Moja przygoda z tworzeniem stron internetowych zaczęła się od ciekawości budowania angażujących cyfrowych doświadczeń. Od tego czasu zdobyłem solidne podstawy w fullstack developmencie, ze szczególną mocną stroną w backendzie — zwłaszcza pracując z NestJS.",
-    "p2currently": "Obecnie pracuję w",
-    "p2role": "jako Junior Python Developer, gdzie buduję i wdrażam modele uczenia maszynowego.",
-    "p3": "Poza pracą lubię odkrywać nowe technologie — ostatnio ta ciekawość zaprowadziła mnie w świat podstaw uczenia maszynowego. Obecnie skupiam się na nauce budowania i trenowania modeli od zera oraz rozumienia kluczowych zasad stojących za inteligentnymi systemami. Często można mnie też spotkać na korcie do badmintona, relaksującego się przy dobrej grze."
+    "heading": "O mnie"
   },
   "skills": {
-    "heading": "Umiejętności"
+    "heading": "Technologie"
   },
   "timeline": {
-    "heading": "Ścieżka kariery",
+    "heading": "Doświadczenie",
     "professional": "Doświadczenie zawodowe",
     "education": "Wykształcenie"
   },
