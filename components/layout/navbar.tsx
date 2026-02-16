@@ -67,15 +67,13 @@ export const Navbar = () => {
             <LocaleSwitcher />
           </nav>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsOpen(true)}
-          >
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Open menu</span>
-          </Button>
+          <div className="flex items-center gap-1 md:hidden">
+            <LocaleSwitcher />
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -129,7 +127,6 @@ export const Navbar = () => {
                     </Link>
                   </motion.div>
                 ))}
-                <LocaleSwitcher />
               </div>
             </motion.div>
           </>

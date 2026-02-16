@@ -1,3 +1,4 @@
+import { ContactButton } from "@/components/contact-button";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { routing } from "@/i18n/routing";
@@ -71,6 +72,7 @@ export default async function RootLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <ContactButton />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
