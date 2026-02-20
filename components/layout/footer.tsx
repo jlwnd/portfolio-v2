@@ -11,7 +11,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-4">
             <Link
-              href="https://github.com/j-lewandowski"
+              href="https://github.com/jlwnd"
               target="_blank"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="GitHub"

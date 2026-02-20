@@ -42,7 +42,7 @@ export const projects: IProject[] = [
     timeline: "2025",
     status: ProjectStatus.IN_PROGRESS,
     lastUpdated: new Date("04.25.2025"),
-    github: "https://github.com/j-lewandowski/portfolio-v2",
+    github: "https://github.com/jlwnd/portfolio-v2",
     deploymentUrl: "https://jlewandowski.dev",
   },
   {
@@ -70,7 +70,7 @@ export const projects: IProject[] = [
     timeline: "2024",
     status: ProjectStatus.COMPLETED,
     lastUpdated: new Date("09.02.2024"),
-    github: "https://github.com/j-lewandowski/leftovers-frontend",
+    github: "https://github.com/jlwnd/leftovers-frontend",
   },
   {
     id: "prestika",

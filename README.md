@@ -1,5 +1,5 @@
 <div align='center'>
-  <img alt="LOGO" src="https://github.com/j-lewandowski/portfolio-v2/blob/main/public/images/Memoji-laptop.png?raw=true" width=120/>
+  <img alt="LOGO" src="https://github.com/jlwnd/portfolio-v2/blob/main/public/images/Memoji-laptop.png?raw=true" width=120/>
   <h1> Jakub Lewandowski </br> Portfolio Website</h1>
 </div>
 
