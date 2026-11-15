@@ -69,4 +69,5 @@ export type Project = {
   technicalDetails?: string;
   challenges?: string;
   outcome?: string;
+  translations?: { language: string; slug?: string }[];
 };

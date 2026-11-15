@@ -209,6 +209,8 @@ export const getProject = async (
       links,
       "images": coalesce(images[].asset->url, []),
       content,
+      "translations": *[_type == "translation.metadata" && references(^._id)][0]
+        .translations[]{ "language": _key, "slug": value->slug.current },
       features,
       technicalDetails,
       challenges,
@@ -235,6 +237,8 @@ export const getProject = async (
       links,
       "images": coalesce(images[].asset->url, []),
       content,
+      "translations": *[_type == "translation.metadata" && references(^._id)][0]
+        .translations[]{ "language": _key, "slug": value->slug.current },
       features,
       technicalDetails,
       challenges,
@@ -281,3 +285,21 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
   if (!result) throw new Error("No siteSettings document found in Sanity");
   return result;
 };
+
+export type SitemapProject = {
+  slug: string;
+  language: string;
+  updatedAt: string;
+  translations?: { language: string; slug?: string }[];
+};
+
+export const getProjectsForSitemap = async (): Promise<SitemapProject[]> =>
+  sanity.fetch<SitemapProject[]>(`
+    *[_type == "project" && defined(slug.current) && defined(language)] {
+      "slug": slug.current,
+      language,
+      "updatedAt": _updatedAt,
+      "translations": *[_type == "translation.metadata" && references(^._id)][0]
+        .translations[]{ "language": _key, "slug": value->slug.current }
+    }
+  `);

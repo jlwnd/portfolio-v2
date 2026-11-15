@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { routing } from "@/i18n/routing";
 import { getSiteSettings } from "@/lib/queries";
+import { SITE_URL, localizedUrl } from "@/lib/site";
 import type { Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import {
@@ -31,11 +32,27 @@ export async function generateMetadata({
   const site = await getSiteSettings();
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
-    ...(site.ogImageUrl && {
-      openGraph: { images: [{ url: site.ogImageUrl, width: 1200, height: 630 }] },
-    }),
+    applicationName: site.name,
+    authors: [{ name: site.name, url: SITE_URL }],
+    openGraph: {
+      type: "website",
+      siteName: site.name,
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+      url: localizedUrl(locale),
+      title: t("title"),
+      description: t("description"),
+      ...(site.ogImageUrl && {
+        images: [{ url: site.ogImageUrl, width: 1200, height: 630 }],
+      }),
+    },
+    twitter: {
+      card: site.ogImageUrl ? "summary_large_image" : "summary",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 

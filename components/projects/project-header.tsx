@@ -5,7 +5,7 @@ import {
   CheckCircle2,
   Timer,
   AlertCircle,
-  Lock,
+  Briefcase,
 } from "lucide-react";
 import { Project } from "@/types";
 import { useTranslations } from "next-intl";
@@ -64,7 +64,7 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
 
       {project.confidential && (
         <p className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-          <Lock className="h-4 w-4 text-primary/80" />
+          <Briefcase className="h-4 w-4 text-primary/80" />
           {tDetail("ndaNote")}
         </p>
       )}

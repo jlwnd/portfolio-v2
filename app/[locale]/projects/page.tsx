@@ -2,6 +2,7 @@ import { ProjectsFilter } from "@/components/projects/projects-filter";
 import { ProjectsGrid } from "@/components/projects/projects-grid";
 import { ProjectsHeader } from "@/components/projects/projects-header";
 import { getProjects, getSiteSettings } from "@/lib/queries";
+import { languageAlternates, localizedUrl } from "@/lib/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const revalidate = 86400;
@@ -18,7 +19,12 @@ export async function generateMetadata({
   return {
     title: t("projectsTitle"),
     description: t("projectsDescription"),
+    alternates: {
+      canonical: localizedUrl(locale, "/projects"),
+      languages: languageAlternates("/projects"),
+    },
     openGraph: {
+      url: localizedUrl(locale, "/projects"),
       title: t("projectsTitle"),
       description: t("projectsDescription"),
       type: "website",
