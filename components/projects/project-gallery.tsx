@@ -36,7 +36,7 @@ export const ProjectGallery = ({ images }: { images: string[] }) => {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,hsl(142_70%_45%/0.15),transparent_70%)]"></div>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <Image
-                  alt="Project image"
+                  alt={t("imageAlt")}
                   src={images[currentIndex % images.length]}
                   fill
                 />

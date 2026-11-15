@@ -5,6 +5,8 @@ import {projectType} from './project'
 import {skillsPageType} from './skills-page'
 import {technologyType} from './technology'
 import {timelineItemType} from './timeline-item'
+import {siteSettingsType} from './site-settings'
+import {uiStringsType} from './ui-strings'
 
 export const schemaTypes = [
   heroPageType,
@@ -14,4 +16,6 @@ export const schemaTypes = [
   timelineItemType,
   experiencePageType,
   projectType,
+  uiStringsType,
+  siteSettingsType,
 ]

@@ -27,7 +27,9 @@ export default async function ProjectPage({
     <div className="flex-1 w-full max-w-[95vw] md:max-w-[90vw] mx-auto px-4 py-16 md:py-24">
       <div className="max-w-7xl mx-auto">
         <ProjectHeader project={project} />
-        <ProjectGallery images={project.images} />
+        {project.images.length > 0 && (
+          <ProjectGallery images={project.images} />
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
           <div className="lg:col-span-2">

@@ -41,6 +41,14 @@ export const projectType = defineType({
     }),
 
     defineField({
+      name: 'confidential',
+      title: 'Confidential (NDA)',
+      type: 'boolean',
+      description: 'Commercial project under NDA — shows a confidential placeholder instead of images and an NDA note.',
+      initialValue: false,
+    }),
+
+    defineField({
       name: 'type',
       title: 'Project type',
       type: 'string',

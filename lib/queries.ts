@@ -1,5 +1,6 @@
 import {
   AboutMePageContent,
+  SiteSettings,
   ExperiencePageContent,
   HeroPageContent,
   Project,
@@ -57,9 +58,12 @@ export const getSkills = async (
   const result = await sanity.fetch<SkillsPageContent>(
     `
     *[_type == "skillsPage" && language == $locale][0]{
-      skills[]{
-        name,
-        "iconUrl": icon.asset->url
+      categories[]{
+        title,
+        "skills": skills[]{
+          name,
+          "iconUrl": icon.asset->url
+        }
       }
     }
   `,
@@ -70,9 +74,12 @@ export const getSkills = async (
 
   return sanity.fetch<SkillsPageContent>(`
     *[_type == "skillsPage"][0]{
-      skills[]{
-        name,
-        "iconUrl": icon.asset->url
+      categories[]{
+        title,
+        "skills": skills[]{
+          name,
+          "iconUrl": icon.asset->url
+        }
       }
     }
   `);
@@ -106,11 +113,12 @@ export const getFeaturedProjects = async (
 ): Promise<Project[]> => {
   const result = await sanity.fetch<Project[]>(
     `
-    *[_type == "project" && featured == true && language == $locale] {
+    *[_type == "project" && featured == true && language == $locale] | order(lastUpdated desc) {
       "slug": slug.current,
       name,
       description,
       featured,
+      confidential,
       type,
       timeline,
       status,
@@ -125,11 +133,12 @@ export const getFeaturedProjects = async (
   if (result && result.length > 0) return result;
 
   return sanity.fetch<Project[]>(`
-    *[_type == "project" && featured == true] {
+    *[_type == "project" && featured == true] | order(lastUpdated desc) {
       "slug": slug.current,
       name,
       description,
       featured,
+      confidential,
       type,
       timeline,
       status,
@@ -145,11 +154,12 @@ export const getProjects = async (
 ): Promise<Project[]> => {
   const result = await sanity.fetch<Project[]>(
     `
-    *[_type == "project" && language == $locale] {
+    *[_type == "project" && language == $locale] | order(lastUpdated desc) {
       "slug": slug.current,
       name,
       description,
       featured,
+      confidential,
       type,
       timeline,
       status,
@@ -164,11 +174,12 @@ export const getProjects = async (
   if (result && result.length > 0) return result;
 
   return sanity.fetch<Project[]>(`
-    *[_type == "project"] {
+    *[_type == "project"] | order(lastUpdated desc) {
       "slug": slug.current,
       name,
       description,
       featured,
+      confidential,
       type,
       timeline,
       status,
@@ -190,6 +201,7 @@ export const getProject = async (
       name,
       description,
       featured,
+      confidential,
       type,
       timeline,
       status,
@@ -215,6 +227,7 @@ export const getProject = async (
       name,
       description,
       featured,
+      confidential,
       type,
       timeline,
       status,
@@ -230,4 +243,41 @@ export const getProject = async (
   `,
     { slug },
   );
+};
+
+const UI_STRINGS_PROJECTION = `{
+  metadata, nav, hero, about, skills, timeline, featuredProjects,
+  projects, projectDetail, notFound, footer, localeSwitcher
+}`;
+
+export const getUiStrings = async (
+  locale: string = "en",
+): Promise<Record<string, Record<string, string>>> => {
+  const result = await sanity.fetch(
+    `*[_type == "uiStrings" && language == $locale][0] ${UI_STRINGS_PROJECTION}`,
+    { locale },
+  );
+
+  if (result) return result;
+
+  const fallback = await sanity.fetch(
+    `*[_type == "uiStrings"][0] ${UI_STRINGS_PROJECTION}`,
+  );
+  if (!fallback) throw new Error("No uiStrings document found in Sanity");
+  return fallback;
+};
+
+export const getSiteSettings = async (): Promise<SiteSettings> => {
+  const result = await sanity.fetch<SiteSettings | null>(`
+    *[_type == "siteSettings" && _id == "siteSettings"][0] {
+      name,
+      email,
+      githubUrl,
+      linkedinUrl,
+      "logoUrl": logo.asset->url,
+      "ogImageUrl": ogImage.asset->url
+    }
+  `);
+  if (!result) throw new Error("No siteSettings document found in Sanity");
+  return result;
 };
