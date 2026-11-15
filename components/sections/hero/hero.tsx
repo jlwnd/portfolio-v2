@@ -1,5 +1,6 @@
 import { getHeroContent } from "@/lib/queries";
 import { HeroMotion } from "./hero-motion";
+import { HeroSpotlight } from "./hero-spotlight";
 
 export async function Hero({ locale }: { locale: string }) {
   const hero = await getHeroContent(locale);
@@ -11,6 +12,8 @@ export async function Hero({ locale }: { locale: string }) {
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.07)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.07)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_45%,black_20%,transparent_100%)]"
         aria-hidden
       />
+
+      <HeroSpotlight />
 
       {/* Small white backlight behind the avatar. */}
       <div
