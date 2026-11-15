@@ -82,3 +82,27 @@ html,
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .hero-glow {
+    animation: hero-glow 6s ease-in-out infinite;
+  }
+
+  @keyframes hero-glow {
+    0%,
+    100% {
+      opacity: 0.75;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glow {
+      animation: none;
+    }
+  }
+}

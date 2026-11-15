@@ -16,7 +16,9 @@ export function About({
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
       <TechBackground
-        skills={skillsPageContent.categories.flatMap((c) => c.skills ?? [])}
+        skills={skillsPageContent.categories
+          .flatMap((c) => c.skills ?? [])
+          .filter((s) => s.iconUrl)}
       />
 
       <div className="container px-4 mx-auto relative z-10">

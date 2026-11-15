@@ -28,11 +28,25 @@ export function SkillsMotion({ categories }: { categories: SkillCategory[] }) {
             {(category.skills ?? []).map((skill) => (
               <SkillCard key={skill.name}>
                 <div className="mx-auto mb-4 flex justify-center">
-                  <img
-                    src={skill.iconUrl}
-                    alt=""
-                    className="h-10 w-10 object-contain invert"
-                  />
+                  {skill.iconUrl ? (
+                    <img
+                      src={skill.iconUrl}
+                      alt=""
+                      className="h-10 w-10 object-contain invert"
+                    />
+                  ) : (
+                    <span
+                      className="flex h-10 w-10 items-center justify-center rounded-md border border-foreground/40 text-sm font-bold text-foreground"
+                      aria-hidden
+                    >
+                      {skill.name
+                        .split(/\s+/)
+                        .map((word) => word[0])
+                        .join("")
+                        .slice(0, 2)
+                        .toUpperCase()}
+                    </span>
+                  )}
                 </div>
                 <p className="text-center font-medium">{skill.name}</p>
               </SkillCard>

@@ -21,7 +21,7 @@ export type AboutMePageContent = {
 
 export type SkillItem = {
   name: string;
-  iconUrl: string;
+  iconUrl?: string;
 };
 
 export type SkillCategory = {

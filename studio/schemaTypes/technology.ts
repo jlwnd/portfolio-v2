@@ -15,11 +15,11 @@ export const technologyType = defineType({
     defineField({
       name: 'icon',
       title: 'Technology Icon (SVG only)',
+      description: 'Optional. Without an icon, the first letters of the name are shown.',
       type: 'file',
       options: {
         accept: 'image/svg+xml',
       },
-      validation: (Rule) => Rule.required(),
     }),
   ],
 })
