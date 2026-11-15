@@ -13,7 +13,7 @@ import {
 import { SITE_URL, languageAlternates, localizedUrl } from "@/lib/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const revalidate = 86400;
+export const revalidate = 60;
 
 export async function generateMetadata({
   params,

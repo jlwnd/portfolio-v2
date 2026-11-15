@@ -8,7 +8,7 @@ import { localizedUrl } from "@/lib/site";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-export const revalidate = 86400;
+export const revalidate = 60;
 
 export async function generateMetadata({
   params,

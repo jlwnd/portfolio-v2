@@ -3,7 +3,7 @@ import { getProjectsForSitemap } from "@/lib/queries";
 import { languageAlternates, localizedUrl } from "@/lib/site";
 import { MetadataRoute } from "next";
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();

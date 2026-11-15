@@ -254,17 +254,19 @@ const UI_STRINGS_PROJECTION = `{
   projects, projectDetail, notFound, footer, localeSwitcher
 }`;
 
+type UiStrings = Record<string, Record<string, string>>;
+
 export const getUiStrings = async (
   locale: string = "en",
-): Promise<Record<string, Record<string, string>>> => {
-  const result = await sanity.fetch(
+): Promise<UiStrings> => {
+  const result = await sanity.fetch<UiStrings | null>(
     `*[_type == "uiStrings" && language == $locale][0] ${UI_STRINGS_PROJECTION}`,
     { locale },
   );
 
   if (result) return result;
 
-  const fallback = await sanity.fetch(
+  const fallback = await sanity.fetch<UiStrings | null>(
     `*[_type == "uiStrings"][0] ${UI_STRINGS_PROJECTION}`,
   );
   if (!fallback) throw new Error("No uiStrings document found in Sanity");
