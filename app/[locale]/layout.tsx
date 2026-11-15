@@ -2,9 +2,15 @@ import { ContactButton } from "@/components/contact-button";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { routing } from "@/i18n/routing";
+import { getSiteSettings } from "@/lib/queries";
+import { SITE_URL, localizedUrl } from "@/lib/site";
 import type { Viewport } from "next";
-import { NextIntlClientProvider, useMessages } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
@@ -23,10 +29,30 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
+  const site = await getSiteSettings();
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
+    applicationName: site.name,
+    authors: [{ name: site.name, url: SITE_URL }],
+    openGraph: {
+      type: "website",
+      siteName: site.name,
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+      url: localizedUrl(locale),
+      title: t("title"),
+      description: t("description"),
+      ...(site.ogImageUrl && {
+        images: [{ url: site.ogImageUrl, width: 1200, height: 630 }],
+      }),
+    },
+    twitter: {
+      card: site.ogImageUrl ? "summary_large_image" : "summary",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
@@ -57,7 +83,8 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
 
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const messages = await getMessages();
+  const site = await getSiteSettings();
 
   return (
     <html lang={locale}>
@@ -69,10 +96,10 @@ export default async function RootLayout({
             enableSystem={false}
             disableTransitionOnChange
           >
-            <Navbar />
+            <Navbar site={site} />
             <main>{children}</main>
-            <Footer />
-            <ContactButton />
+            <Footer site={site} />
+            <ContactButton site={site} />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

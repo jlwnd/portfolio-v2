@@ -5,12 +5,14 @@ import {
   CheckCircle2,
   Timer,
   AlertCircle,
+  Briefcase,
 } from "lucide-react";
 import { Project } from "@/types";
 import { useTranslations } from "next-intl";
 
 export const ProjectHeader = ({ project }: { project: Project }) => {
   const t = useTranslations("projects");
+  const tDetail = useTranslations("projectDetail");
 
   return (
     <div className="mb-8">
@@ -59,6 +61,13 @@ export const ProjectHeader = ({ project }: { project: Project }) => {
       <p className="text-lg text-muted-foreground max-w-3xl mb-6">
         {project.description}
       </p>
+
+      {project.confidential && (
+        <p className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+          <Briefcase className="h-4 w-4 text-primary/80" />
+          {tDetail("ndaNote")}
+        </p>
+      )}
 
       <div className="flex flex-wrap gap-2">
         {project.technologies.map((tech: string) => (

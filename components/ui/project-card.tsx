@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Project } from "@/types";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Briefcase } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -19,6 +19,15 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               className="aspect-video relative overflow-hidden bg-secondary object-cover"
               fill
             />
+          ) : project.confidential ? (
+            <div className="flex flex-col items-center gap-3 text-primary/80">
+              <div className="h-12 w-12 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center">
+                <Briefcase className="h-5 w-5" />
+              </div>
+              <span className="text-xs font-medium uppercase tracking-widest">
+                {t("confidential")}
+              </span>
+            </div>
           ) : (
             <div className="text-muted-foreground">{t("noImage")}</div>
           )}

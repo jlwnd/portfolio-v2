@@ -14,7 +14,7 @@ export function Skills({
     <section id="skills" className="py-20 md:py-32 bg-muted/30">
       <div className="container px-4 mx-auto">
         <SectionHeading>{t("heading")}</SectionHeading>
-        <SkillsMotion skills={skillsPageContent.skills} />
+        <SkillsMotion categories={skillsPageContent.categories} />
       </div>
     </section>
   );

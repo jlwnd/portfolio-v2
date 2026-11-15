@@ -9,8 +9,9 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
 import { LocaleSwitcher } from "../locale-switcher";
+import { SiteSettings } from "@/types";
 
-export const Navbar = () => {
+export const Navbar = ({ site }: { site: SiteSettings }) => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
@@ -39,14 +40,14 @@ export const Navbar = () => {
               transition={{ duration: 0.3 }}
             >
               <Image
-                src="/images/Memoji-laptop.png"
-                alt="Logo"
+                src={site.logoUrl}
+                alt={site.name}
                 width={64}
                 height={64}
               />
             </motion.div>
             <span className="font-bold text-lg hidden sm:inline-block">
-              Jakub Lewandowski
+              {site.name}
             </span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
@@ -71,7 +72,7 @@ export const Navbar = () => {
             <LocaleSwitcher />
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
               <Menu className="h-5 w-5" />
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">{t("openMenu")}</span>
             </Button>
           </div>
         </div>
@@ -102,7 +103,7 @@ export const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   <X className="h-5 w-5" />
-                  <span className="sr-only">Close menu</span>
+                  <span className="sr-only">{t("closeMenu")}</span>
                 </Button>
               </div>
               <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] gap-8">

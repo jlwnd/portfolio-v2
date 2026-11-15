@@ -1,31 +1,33 @@
+import { routing } from "@/i18n/routing";
+import { getProjectsForSitemap } from "@/lib/queries";
+import { languageAlternates, localizedUrl } from "@/lib/site";
 import { MetadataRoute } from "next";
 
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://jakub-lewandowski.dev";
+  const now = new Date();
 
-  const routes = ["", "/projects", "/resume"];
+  const staticPages = ["", "/projects"].flatMap((path) =>
+    routing.locales.map((locale) => ({
+      url: localizedUrl(locale, path),
+      lastModified: now,
+      alternates: { languages: languageAlternates(path) },
+    })),
+  );
 
-  const sitemapEntries: MetadataRoute.Sitemap = routes.flatMap((route) => [
-    {
-      url: `${baseUrl}${route}`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "weekly" as const,
-      priority: route === "" ? 1.0 : 0.9,
-      alternates: {
-        languages: {
-          en: `${baseUrl}${route}`,
-          pl: `${baseUrl}/pl${route}`,
-        },
-      },
+  const projects = await getProjectsForSitemap();
+  const projectPages = projects.map((project) => ({
+    url: localizedUrl(project.language, `/projects/${project.slug}`),
+    lastModified: new Date(project.updatedAt),
+    alternates: {
+      languages: Object.fromEntries(
+        (project.translations ?? [])
+          .filter((tr) => tr.slug)
+          .map((tr) => [tr.language, localizedUrl(tr.language, `/projects/${tr.slug}`)]),
+      ),
     },
-  ]);
+  }));
 
-  const pdfUrl: MetadataRoute.Sitemap[number] = {
-    url: `${baseUrl}/docs/CV.pdf`,
-    lastModified: new Date().toISOString().split("T")[0],
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  };
-
-  return [...sitemapEntries, pdfUrl];
+  return [...staticPages, ...projectPages];
 }

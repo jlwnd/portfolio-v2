@@ -21,7 +21,15 @@ export const timelineItemType = defineType({
       name: 'description',
       title: 'Description',
       type: 'text',
+      description: 'Lines starting with "- " are shown as a bulleted list.',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'technologies',
+      title: 'Technologies',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {layout: 'tags'},
     }),
   ],
 })

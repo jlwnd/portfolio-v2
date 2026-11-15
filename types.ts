@@ -1,5 +1,14 @@
 import { PortableTextBlock } from "@portabletext/types";
 
+export type SiteSettings = {
+  name: string;
+  email: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
+  logoUrl: string;
+  ogImageUrl?: string;
+};
+
 export type HeroPageContent = {
   title: string;
   imageUrl: string;
@@ -12,17 +21,23 @@ export type AboutMePageContent = {
 
 export type SkillItem = {
   name: string;
-  iconUrl: string;
+  iconUrl?: string;
+};
+
+export type SkillCategory = {
+  title: string;
+  skills: SkillItem[];
 };
 
 export type SkillsPageContent = {
-  skills: SkillItem[];
+  categories: SkillCategory[];
 };
 
 export type TimelineItem = {
   date: string;
   title: string;
   description: string;
+  technologies?: string[];
 };
 
 export type ExperiencePageContent = {
@@ -42,6 +57,7 @@ export type Project = {
   name: string;
   description: string;
   featured: boolean;
+  confidential?: boolean;
   type: string;
   timeline: string;
   status: string;
@@ -53,4 +69,5 @@ export type Project = {
   technicalDetails?: string;
   challenges?: string;
   outcome?: string;
+  translations?: { language: string; slug?: string }[];
 };

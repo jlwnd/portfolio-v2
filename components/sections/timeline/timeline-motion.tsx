@@ -51,6 +51,7 @@ export function TimelineMotion({
                   date={item.date}
                   title={item.title}
                   description={item.description}
+                  technologies={item.technologies}
                   icon={<Briefcase className="h-4 w-4" />}
                 />
               </motion.div>
@@ -73,6 +74,7 @@ export function TimelineMotion({
                   date={item.date}
                   title={item.title}
                   description={item.description}
+                  technologies={item.technologies}
                   icon={<GraduationCap className="h-4 w-4" />}
                 />
               </motion.div>
